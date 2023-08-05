@@ -36,14 +36,11 @@ namespace MyWebAPI.Migrations
                     b.Property<double>("DiemGiuaKy")
                         .HasColumnType("float");
 
-                    b.Property<double>("DiemTrungBinh")
-                        .HasColumnType("float");
-
                     b.Property<string>("HoTen")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("MSSV")
+                    b.Property<int>("STC")
                         .HasColumnType("int");
 
                     b.Property<string>("TenHocPhan")
@@ -80,7 +77,7 @@ namespace MyWebAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("MSSV")
+                    b.Property<int?>("MSSV")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("NTNS")

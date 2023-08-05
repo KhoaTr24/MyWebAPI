@@ -9,7 +9,7 @@ namespace MyWebAPI.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
-        private readonly StudentsDBContext _context;
+        public readonly StudentsDBContext _context;
 
         public StudentsController(StudentsDBContext context)
         {
@@ -35,6 +35,17 @@ namespace MyWebAPI.Controllers
             return students == null?NotFound():Ok(students);
         }
 
+        //GET BY MSSV
+        [HttpGet("MSSV")]
+        public ActionResult GetStudentMSSV(int mssv)
+        {
+            var student = from s in _context.Students where s.MSSV == mssv select s;
+            if (student == null)
+            {
+                return NotFound();
+            }
+            return Ok(student);
+        }
         // PUT
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStudents(int id, Students students)

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyWebAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class StudentDbInit : Migration
+    public partial class StudentDBInit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,11 +18,10 @@ namespace MyWebAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HoTen = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    MSSV = table.Column<int>(type: "int", nullable: false),
                     TenHocPhan = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    STC = table.Column<int>(type: "int", nullable: false),
                     DiemGiuaKy = table.Column<double>(type: "float", nullable: false),
-                    DiemCuoiKy = table.Column<double>(type: "float", nullable: false),
-                    DiemTrungBinh = table.Column<double>(type: "float", nullable: false)
+                    DiemCuoiKy = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,7 +35,7 @@ namespace MyWebAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     HoTen = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    MSSV = table.Column<int>(type: "int", nullable: false),
+                    MSSV = table.Column<int>(type: "int", nullable: true),
                     NTNS = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DiaChi = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     SDT = table.Column<int>(type: "int", nullable: false),

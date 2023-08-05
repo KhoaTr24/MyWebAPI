@@ -9,7 +9,7 @@ namespace MyWebAPI.Controllers
     [ApiController]
     public class DiemsController : ControllerBase
     {
-        private readonly StudentsDBContext _context;
+        public readonly StudentsDBContext _context;
        
         public DiemsController(StudentsDBContext context)
         {
@@ -20,12 +20,21 @@ namespace MyWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Diem>>> GetDiem()
         {
+            StudentsDBContext context = _context;
             if (_context.Diem == null)
             {
                 return NotFound();
             }
-            var diems = await _context.Diem.ToListAsync();
+            var diems = from s in _context.Students join d in _context.Diem on s.HoTen equals d.HoTen where s.HoTen == d.HoTen select s;
             return Ok(diems);
+        }
+
+        // GET BY MSSV
+        [HttpGet("MSSV")]
+        public ActionResult GetMSSV(int mssv)
+        {
+            var diemmssv = from d in _context.Students where d.MSSV == mssv select d;
+            return Ok(diemmssv);
         }
         // GET BY ID
         [HttpGet("{id}")]

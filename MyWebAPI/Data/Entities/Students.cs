@@ -10,7 +10,7 @@ namespace MyWebAPI.Data.Entities
         public int Id { get; set; }
         [MaxLength(50)]
         public string? HoTen { get; set; }
-        public int MSSV { get; set; }
+        public int? MSSV { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
         public DateTime? NTNS { get; set; }
@@ -24,12 +24,15 @@ namespace MyWebAPI.Data.Entities
     [Table("Diem")]
     public class Diem
     {
+        Students s = new Students();
         public int Id { get; set; }
         [MaxLength(50)]
         public string? HoTen { get; set; }
-        public int MSSV { get; set; }
+        public int? MSSV { get { return s.MSSV; } }
         [MaxLength(50)]
         public string? TenHocPhan { get; set; }
+        [Range(3,3)]
+        public int STC { get; set; }
         [Range(0, 10)]
         public double DiemGiuaKy { get; set; }
         [Range(0, 10)]
@@ -37,5 +40,4 @@ namespace MyWebAPI.Data.Entities
         [Range(0, 10)]
         public double DiemTrungBinh { get { return (DiemGiuaKy + DiemCuoiKy) / 2; } }
     }
-   
 }

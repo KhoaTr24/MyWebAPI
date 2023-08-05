@@ -12,8 +12,8 @@ using MyWebAPI.Data.Contexts;
 namespace MyWebAPI.Migrations
 {
     [DbContext(typeof(StudentsDBContext))]
-    [Migration("20230804211747_StudentDbInit")]
-    partial class StudentDbInit
+    [Migration("20230805122756_StudentDBInit")]
+    partial class StudentDBInit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,14 +39,11 @@ namespace MyWebAPI.Migrations
                     b.Property<double>("DiemGiuaKy")
                         .HasColumnType("float");
 
-                    b.Property<double>("DiemTrungBinh")
-                        .HasColumnType("float");
-
                     b.Property<string>("HoTen")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("MSSV")
+                    b.Property<int>("STC")
                         .HasColumnType("int");
 
                     b.Property<string>("TenHocPhan")
@@ -83,7 +80,7 @@ namespace MyWebAPI.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("MSSV")
+                    b.Property<int?>("MSSV")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("NTNS")
