@@ -34,7 +34,6 @@ namespace MyWebAPI.Controllers
             var diems = await _context.Diem.FindAsync(id);
             return diems == null ? NotFound() : Ok(diems);
         }
-        //
         // PUT
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDiem(int id, Diem diem)
