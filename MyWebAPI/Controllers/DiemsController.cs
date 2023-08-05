@@ -10,7 +10,7 @@ namespace MyWebAPI.Controllers
     public class DiemsController : ControllerBase
     {
         private readonly StudentsDBContext _context;
-
+       
         public DiemsController(StudentsDBContext context)
         {
             _context = context;
@@ -27,16 +27,6 @@ namespace MyWebAPI.Controllers
             var diems = await _context.Diem.ToListAsync();
             return Ok(diems);
         }
-
-        //GET BY MSSV
-        [HttpGet("MSSV")]
-        public async Task<ActionResult<Diem>> GetDiemMSSV(int mssv)
-        {
-           var mssvs = _context.Diem.SingleOrDefault(d => d.MSSV == mssv);
-            await _context.Diem.ToListAsync();
-            return Ok(mssvs);
-        }
-
         // GET BY ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Diem>> GetDiem(int id)
