@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic;
+﻿using MyWebAPI.Data.Contexts;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -35,6 +35,7 @@ namespace MyWebAPI.Data.Entities
         [Range(0, 10)]
         public double DiemCuoiKy { get; set; }
         [Range(0, 10)]
-        public double DiemTrungBinh { get; set; }
+        public double DiemTrungBinh { get { return (DiemGiuaKy + DiemCuoiKy) / 2; } }
     }
+   
 }
